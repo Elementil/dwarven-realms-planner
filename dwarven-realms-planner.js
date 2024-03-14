@@ -1,7 +1,9 @@
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext("2d");
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext("2d");
 
-loadAndDrawBackdrop();
+    loadAndDrawBackdrop();
+});
 
 function loadAndDrawBackdrop() {
     const backdrop = new Image();
