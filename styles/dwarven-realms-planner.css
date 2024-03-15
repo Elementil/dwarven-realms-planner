@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Trajan Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Trajan Pro Regular'), url('../resources/fonts/TrajanPro-Regular.woff') format('woff');
+}
+
+body * {
+    font-family: 'Trajan Pro Regular';
+    color: lightgray;
+    text-shadow: 1px 1px 1px black;
+    box-sizing: border-box;
+}
+
+body *:focus {
+    outline: none;
+}
+
+input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 20px;
+    background: #222222;
+    border: 1px solid lightgray;
+}
+
+button {
+    font-size: 24px;
+    font-weight: bold;
+    background: url('../resources//images/button.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #EB7800;
+    filter: brightness(1.75);
+}
+
+button:active {
+    color: #EB7800;
+    filter: invert(6%) sepia(93%) saturate(1512%) hue-rotate(360deg) brightness(80%) contrast(104%);
+}
+
+button.reset-all {
+    flex: 1;
+}

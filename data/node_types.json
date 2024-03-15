@@ -1,0 +1,38 @@
+{
+    "vitality": {
+        "label": "Vitality",
+        "image": "./resources/images/vitality.png",
+        "description": "Increases your life by 3%",
+        "effects": [
+            {
+                "type": "hp",
+                "value": "3",
+                "unit": "percent"
+            }
+        ]
+    },
+    "attack_damage": {
+        "label": "Attack Damage",
+        "image": "./resources/images/attack_damage.png",
+        "description": "Increases attack damage by 2%",
+        "effects": [
+            {
+                "type": "attack_damage",
+                "value": "2",
+                "unit": "percent"
+            }
+        ]
+    },
+    "agility": {
+        "label": "Agility",
+        "image": "./resources/images/agility.png",
+        "description": "Increases your agility by 2%",
+        "effects": [
+            {
+                "type": "agility",
+                "value": "2",
+                "unit": "percent"
+            }
+        ]
+    }
+}

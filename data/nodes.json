@@ -1,0 +1,61 @@
+[
+    {
+        "id": 1,
+        "type": "vitality",
+        "neighbours": [
+            2
+        ],
+        "x": 1076,
+        "y": 1194,
+        "rootNode": true
+    },
+    {
+        "id": 2,
+        "type": "attack_damage",
+        "neighbours": [
+            1,
+            3
+        ],
+        "x": 1007,
+        "y": 1153
+    },
+    {
+        "id": 3,
+        "type": "attack_damage",
+        "neighbours": [
+            2,
+            4,
+            5
+        ],
+        "x": 938,
+        "y": 1119
+    },
+    {
+        "id": 4,
+        "type": "agility",
+        "neighbours": [
+            3,
+            6
+        ],
+        "x": 876,
+        "y": 1135
+    },
+    {
+        "id": 5,
+        "type": "vitality",
+        "neighbours": [
+            3
+        ],
+        "x": 865,
+        "y": 1082
+    },
+    {
+        "id": 6,
+        "type": "agility",
+        "neighbours": [
+            4
+        ],
+        "x": 813,
+        "y": 1148
+    }
+]

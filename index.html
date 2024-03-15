@@ -2,13 +2,26 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="./dwarven-realms-planner.css">
-  <script type="application/javascript" src="./dwarven-realms-planner.js"></script>
+  <link rel="stylesheet" href="./styles/dwarven-realms-planner.css">
+  <script type="module" src="./javascript/dwarven-realms-planner.js"></script>
 </head>
 
 <body style="margin: 0;">
-  <div style="width: 100vw; height: 100vh; display: flex;">
-    <canvas style="margin: auto;"></canvas>
+  <div style="display: flex; background-color: #404443;">
+    <svg id="planner" viewBox="0 0 2529 1427" style="height: 100vh;" xmlns="http://www.w3.org/2000/svg">
+      <image x="0" y="0" href="./resources/images/tree_blank.png" />
+      <image x="870" y="1290" href="./resources//images/available_points.png" />
+      <text id="available-points" x="989" y="1370" fill="lightgray" font-size="22" font-weight="bold" dominant-baseline="middle" text-anchor="middle"></text>
+    </svg>
+    <div style="display: flex; align-items: center; min-width: 230px; max-width: calc(100vw - 2327px);">
+      <div style="display: flex; flex-direction: column; margin: auto 1rem 1rem 1rem; width: 100%;">
+        <div style="margin-bottom: 1rem;">
+          <label for="player-level" style="user-select: none;">Player level</label>
+          <input id="player-level" type="number" min="1" class="input" oninput="validity.valid||(value='');" />
+        </div>
+        <button class="button reset-all">Reset</button>
+      </div>
+    </div>
   </div>
 </body>
 
