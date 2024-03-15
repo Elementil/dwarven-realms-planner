@@ -30,7 +30,7 @@ import nodeTypesImport from '../data/node_types.json' assert { type: 'json' };
 import nodesImport from '../data/nodes.json' assert { type: 'json' };
 
 
-var pt;  // Created once for document
+var pt;
 
 function alert_coords(evt, svg) {
     pt.x = evt.clientX;
@@ -88,6 +88,48 @@ function updateAvailablePoints() {
     const availablePointsText = document.getElementById('planner').getElementById('available-points');
     availablePoints = Math.min(4 + +playerLevel, 204) - nodes.filter(n => n.active).length;
     availablePointsText.textContent = availablePoints;
+}
+
+/**
+ * 
+ * @returns {void}
+ */
+function updateSummary() {
+    const summaryWrapper = document.querySelector('#summary .summary-wrapper');
+    summaryWrapper.replaceChildren();
+    Array.from(getActiveEffects().entries())
+        .sort(([type1,], [type2,]) => type1.localeCompare(type2))
+        .forEach(([type, effects]) => {
+            const effectsByUnit = new Map();
+            effects.forEach(e => {
+                if (!effectsByUnit.has(e.unit)) {
+                    effectsByUnit.set(e.unit, []);
+                }
+                effectsByUnit.get(e.unit).push(e);
+            });
+            summaryWrapper.appendChild(createSummaryEntry(type, effectsByUnit));
+        });
+}
+
+/**
+ * 
+ * @param {string} type 
+ * @param {Map<string, NodeEffect[]>} effectsByUnit 
+ * @returns {HTMLDivElement}
+ */
+function createSummaryEntry(type, effectsByUnit) {
+    const summaryEntry = document.createElement('div');
+    summaryEntry.className = 'summary-entry';
+    const entryLabel = document.createElement('div');
+    entryLabel.textContent = type;
+    summaryEntry.appendChild(entryLabel);
+    Array.from(effectsByUnit.entries())
+        .forEach(([unit, effects]) => {
+            const unitEntry = document.createElement('div');
+            unitEntry.textContent = `+${effects.reduce((sum, e) => sum + e.value, 0)}${unit}`;
+            summaryEntry.appendChild(unitEntry);
+        });
+    return summaryEntry;
 }
 
 /**
@@ -209,6 +251,7 @@ function onNodeClicked(node) {
     if (isNodeStateChangable(node)) {
         setNodeActive(node, !node.active);
         updateAvailablePoints();
+        updateSummary();
     }
 }
 
@@ -219,6 +262,25 @@ function onNodeClicked(node) {
 function resetAll() {
     nodes.forEach(n => setNodeActive(n, false));
     updateAvailablePoints();
+    updateSummary();
+}
+
+/**
+ * 
+ * @returns {Map<string, NodeEffect[]>}
+ */
+function getActiveEffects() {
+    /** @type {Map<string, NodeEffect[]>} */
+    const effects = new Map();
+    nodes.filter(n => n.active)
+        .flatMap(n => nodeTypes.get(n.type).effects)
+        .forEach(e => {
+            if (!effects.has(e.type)) {
+                effects.set(e.type, []);
+            }
+            effects.get(e.type).push(e);
+        });
+    return effects;
 }
 
 /**

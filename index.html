@@ -18,8 +18,15 @@
         <text id="available-points" x="989" y="1370" fill="lightgray" font-size="1.4rem" dominant-baseline="middle" text-anchor="middle"></text>
       </svg>
     </div>
-    <div style="display: flex; align-items: center; flex: 1; min-width: 14.5rem;">
-      <div style="display: flex; flex-direction: column; margin: auto 1rem 1rem 1rem; width: 100%;">
+    <div style="display: flex; flex-direction: column; flex: 1; min-width: 14.5rem;">
+      <div style="display: flex; flex-direction: column; padding: 1rem;">
+        <div id="summary" class="summary">
+          <div style="margin: auto;">Summary</div>
+          <div class="summary-wrapper" style="display: flex; flex-direction: column;">
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; padding: 1rem; margin-top: auto; width: 100%;">
         <div style="margin-bottom: 1rem;">
           <label for="player-level">Player level</label>
           <input id="player-level" type="number" min="1" class="input" oninput="validity.valid||(value='');" />

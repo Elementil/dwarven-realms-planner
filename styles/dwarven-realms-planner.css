@@ -35,7 +35,7 @@ input {
     padding: 1rem;
     font-size: 1.3rem;
     text-align: center;
-    background: #222222;
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid lightgray;
 }
 
@@ -85,4 +85,19 @@ button:active {
 
 button.reset-all {
     flex: 1;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid lightgray;
+}
+
+.summary .summary-wrapper .summary-entry {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
 }
