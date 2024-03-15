@@ -5,6 +5,18 @@
     src: local('Trajan Pro Regular'), url('../resources/fonts/TrajanPro-Regular.woff') format('woff');
 }
 
+@media screen and (max-height:720px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height:450px) {
+    :root {
+        font-size: 10px;
+    }
+}
+
 body * {
     font-family: 'Trajan Pro Regular';
     font-weight: bold;
