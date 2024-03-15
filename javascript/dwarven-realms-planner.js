@@ -29,6 +29,19 @@
 import nodeTypesImport from '../data/node_types.json' assert { type: 'json' };
 import nodesImport from '../data/nodes.json' assert { type: 'json' };
 
+
+var pt;  // Created once for document
+
+function alert_coords(evt, svg) {
+    pt.x = evt.clientX;
+    pt.y = evt.clientY;
+
+    // The cursor point, translated into svg coordinates
+    var cursorpt = pt.matrixTransform(svg.getScreenCTM().inverse());
+    console.log("(" + cursorpt.x + ", " + cursorpt.y + ")");
+}
+
+
 /** @type Map<string, NodeType> */
 const nodeTypes = new Map(Object.entries(nodeTypesImport));
 
@@ -43,7 +56,8 @@ let availablePoints = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     const planner = document.getElementById('planner');
-    planner.addEventListener('click', event => console.log(`x: ${event.x}, y: ${event.y}`));
+    pt = planner.createSVGPoint();
+    planner.addEventListener('click', event => alert_coords(event, planner));
 
     initNodes();
     updateAvailablePoints();
@@ -60,14 +74,9 @@ function initNodes() {
     nodes.forEach(node => {
         const circle = createNodeCircle(node);
         planner.appendChild(circle);
-        node.circle = circle;
 
         const image = createNodeImage(node);
         planner.appendChild(image);
-        node.image = image;
-
-        circle.addEventListener('click', () => onNodeClicked(node));
-        image.addEventListener('click', () => onNodeClicked(node));
     });
 }
 
@@ -116,12 +125,17 @@ function initResetButton() {
  * @returns {SVGCircleElement}
  */
 function createNodeCircle(node) {
+    const nodeType = nodeTypes.get(node.type);
     const circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
     circle.setAttribute("r", "18.5px");
     circle.setAttribute("cx", node.x);
     circle.setAttribute("cy", node.y);
     circle.setAttribute("fill", "transparent");
     circle.style.cursor = 'pointer';
+    circle.addEventListener('click', () => onNodeClicked(node));
+    circle.addEventListener('mouseover', event => showTooltip(event, circle, nodeType));
+    circle.addEventListener('mouseout', hideTooltip);
+    node.circle = circle;
     return circle;
 }
 
@@ -131,13 +145,60 @@ function createNodeCircle(node) {
  * @returns {SVGImageElement}
  */
 function createNodeImage(node) {
+    const nodeType = nodeTypes.get(node.type);
     const image = document.createElementNS("http://www.w3.org/2000/svg", 'image');
     image.setAttribute("x", node.x - 18.5);
     image.setAttribute("y", node.y - 18.5);
-    image.setAttribute("href", nodeTypes.get(node.type).image);
+    image.setAttribute("href", nodeType.image);
     image.style.display = 'none';
     image.style.cursor = 'pointer';
+    image.addEventListener('click', () => onNodeClicked(node));
+    image.addEventListener('mouseover', event => showTooltip(event, image, nodeType));
+    image.addEventListener('mouseout', hideTooltip);
+    node.image = image;
     return image;
+}
+
+/**
+ * 
+ * @param {MouseEvent} event 
+ * @param {SVGGraphicsElement} svgElement 
+ * @param {NodeType} nodeType
+ * @returns {void} 
+ */
+function showTooltip(event, svgElement, nodeType) {
+    const tooltip = document.getElementById('tooltip');
+    tooltip.querySelector('.tooltip-title').textContent = nodeType.label;
+    tooltip.querySelector('.tooltip-description').textContent = nodeType.description;
+    tooltip.querySelector('.tooltip-effect').textContent = `Level 1: ${nodeType.effects.map(e => `+${e.value}${e.unit} ${e.type}`).join(', ')}`;
+    tooltip.style.display = 'block';
+
+    let left = (event.x + (svgElement.getBBox().width / 2));
+    let top = (event.y + (svgElement.getBBox().height / 2));
+
+    if (left < 0) {
+        left = 0;
+    } else if (left + tooltip.getBoundingClientRect().width > window.innerWidth) {
+        left = window.innerWidth - tooltip.getBoundingClientRect().width;
+    }
+
+    if (top < 0) {
+        top = 0;
+    } else if (top + tooltip.getBoundingClientRect().height > window.innerHeight) {
+        top = window.innerHeight - tooltip.getBoundingClientRect().height;
+    }
+
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+}
+
+/**
+ * 
+ * @returns {void}
+ */
+function hideTooltip() {
+    const tooltip = document.getElementById('tooltip');
+    tooltip.style.display = 'none';
 }
 
 /**

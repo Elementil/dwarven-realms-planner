@@ -5,9 +5,9 @@
         "description": "Increases your life by 3%",
         "effects": [
             {
-                "type": "hp",
+                "type": "Max Health",
                 "value": 3,
-                "unit": "percent"
+                "unit": "%"
             }
         ]
     },
@@ -17,9 +17,9 @@
         "description": "Increases attack damage by 2%",
         "effects": [
             {
-                "type": "attack_damage",
+                "type": "Damage",
                 "value": 2,
-                "unit": "percent"
+                "unit": "%"
             }
         ]
     },
@@ -29,9 +29,9 @@
         "description": "Increases your agility by 2%",
         "effects": [
             {
-                "type": "agility",
+                "type": "Agility",
                 "value": 2,
-                "unit": "percent"
+                "unit": "%"
             }
         ]
     }
