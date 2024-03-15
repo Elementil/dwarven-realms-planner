@@ -10,6 +10,7 @@ body * {
     font-weight: bold;
     color: lightgray;
     text-shadow: 1px 1px 1px black;
+    user-select: none;
     box-sizing: border-box;
 }
 
@@ -20,13 +21,14 @@ body *:focus {
 input {
     width: 100%;
     padding: 1rem;
-    font-size: 20px;
+    font-size: 1.3rem;
+    text-align: center;
     background: #222222;
     border: 1px solid lightgray;
 }
 
 button {
-    font-size: 24px;
+    font-size: 1.5rem;
     background: url('../resources//images/button.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -43,6 +45,30 @@ button:hover {
 button:active {
     color: #EB7800;
     filter: invert(6%) sepia(93%) saturate(1512%) hue-rotate(360deg) brightness(80%) contrast(104%);
+}
+
+.tooltip {
+    position: absolute;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.tooltip .tooltip-title {
+    font-size: 2rem;
+    color: #EB7800;
+    filter: brightness(1.75);
+}
+
+.tooltip .tooltip-description {
+    font-size: 1.5rem;
+    color: lightgray;
+}
+
+.tooltip .tooltip-effect {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    color: #EB7800;
+    filter: brightness(1.75);
 }
 
 button.reset-all {
