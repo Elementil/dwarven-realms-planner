@@ -6,7 +6,7 @@
         "effects": [
             {
                 "type": "hp",
-                "value": "3",
+                "value": 3,
                 "unit": "percent"
             }
         ]
@@ -18,7 +18,7 @@
         "effects": [
             {
                 "type": "attack_damage",
-                "value": "2",
+                "value": 2,
                 "unit": "percent"
             }
         ]
@@ -30,7 +30,7 @@
         "effects": [
             {
                 "type": "agility",
-                "value": "2",
+                "value": 2,
                 "unit": "percent"
             }
         ]
