@@ -7,6 +7,7 @@
 
 body * {
     font-family: 'Trajan Pro Regular';
+    font-weight: bold;
     color: lightgray;
     text-shadow: 1px 1px 1px black;
     box-sizing: border-box;
@@ -26,7 +27,6 @@ input {
 
 button {
     font-size: 24px;
-    font-weight: bold;
     background: url('../resources//images/button.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
