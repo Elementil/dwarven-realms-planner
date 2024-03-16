@@ -2,7 +2,7 @@
     "vitality": {
         "label": "Vitality",
         "image": "./resources/images/vitality.png",
-        "description": "Increases your life by 3%",
+        "description": "Increases maximum health",
         "effects": [
             {
                 "type": "max_health",
@@ -14,7 +14,7 @@
     "attack_damage": {
         "label": "Attack Damage",
         "image": "./resources/images/attack_damage.png",
-        "description": "Increases attack damage by 2%",
+        "description": "Increases attack damage",
         "effects": [
             {
                 "type": "damage",
@@ -26,7 +26,7 @@
     "agility": {
         "label": "Agility",
         "image": "./resources/images/agility.png",
-        "description": "Increases your agility by 2%",
+        "description": "Increases agility",
         "effects": [
             {
                 "type": "agility",
@@ -50,7 +50,7 @@
     "armor": {
         "label": "Armor",
         "image": "./resources/images/armor.png",
-        "description": "Increases your armor by 5%",
+        "description": "Increases armor",
         "effects": [
             {
                 "type": "armor",
@@ -62,7 +62,7 @@
     "critical_chance": {
         "label": "Critical Chance",
         "image": "./resources/images/critical_chance.png",
-        "description": "Increases your critical chance by 1%",
+        "description": "Increases critical chance",
         "effects": [
             {
                 "type": "critical_chance",
@@ -74,7 +74,7 @@
     "endurance": {
         "label": "Endurance",
         "image": "./resources/images/endurance.png",
-        "description": "Increases your endurance by 2%",
+        "description": "Increases endurance",
         "effects": [
             {
                 "type": "endurance",
@@ -86,7 +86,7 @@
     "strength": {
         "label": "Strength",
         "image": "./resources/images/strength.png",
-        "description": "Increases your strength by 2%",
+        "description": "Increases strength",
         "effects": [
             {
                 "type": "strength",
@@ -98,7 +98,7 @@
     "inventory_slots": {
         "label": "Inventory Slots",
         "image": "./resources/images/inventory_slots.png",
-        "description": "Increases number of inventory slots by 6",
+        "description": "Increases the number of inventory slots",
         "effects": [
             {
                 "type": "inventory_slots",
@@ -110,7 +110,7 @@
     "boss_hunter": {
         "label": "Boss Hunter",
         "image": "./resources/images/boss_hunter.png",
-        "description": "Increases your damage against bosses by 3%",
+        "description": "Increases damage against bosses",
         "effects": [
             {
                 "type": "boss_damage",
@@ -122,7 +122,7 @@
     "life_steal_chance": {
         "label": "Life Steal Chance",
         "image": "./resources/images/life_steal_chance.png",
-        "description": "Increases your life steal chance by 2%",
+        "description": "Increases life steal chance",
         "effects": [
             {
                 "type": "life_steal_chance",
@@ -134,7 +134,7 @@
     "experience_gain": {
         "label": "Experience Gain",
         "image": "./resources/images/experience_gain.png",
-        "description": "Increases experience gained by 3%",
+        "description": "Increases experience gained",
         "effects": [
             {
                 "type": "experience_gain",
@@ -146,7 +146,7 @@
     "lightning": {
         "label": "Lightning",
         "image": "./resources/images/lightning.png",
-        "description": "Increases your damage with lightning abilities",
+        "description": "Increases damage with lightning abilities",
         "effects": [
             {
                 "type": "lightning_damage",
@@ -158,7 +158,7 @@
     "arcane": {
         "label": "Arcane",
         "image": "./resources/images/arcane.png",
-        "description": "Increases your damage with arcane abilities",
+        "description": "Increases damage with arcane abilities",
         "effects": [
             {
                 "type": "arcane_damage",
@@ -170,7 +170,7 @@
     "fire": {
         "label": "Fire",
         "image": "./resources/images/fire.png",
-        "description": "Increases your damage with fire abilities",
+        "description": "Increases damage with fire abilities",
         "effects": [
             {
                 "type": "fire_damage",
@@ -182,7 +182,7 @@
     "might": {
         "label": "Might",
         "image": "./resources/images/might.png",
-        "description": "Increases attack damage and strength by 1%",
+        "description": "Increases strength and attack damage",
         "effects": [
             {
                 "type": "strength",
@@ -199,15 +199,15 @@
     "steel_skin": {
         "label": "Steel Skin",
         "image": "./resources/images/steel_skin.png",
-        "description": "Increases your life and armor by 2%",
+        "description": "Increases maximum health and armor",
         "effects": [
             {
-                "type": "armor",
+                "type": "max_health",
                 "value": 2,
                 "unit": "%"
             },
             {
-                "type": "max_health",
+                "type": "armor",
                 "value": 2,
                 "unit": "%"
             }
@@ -216,7 +216,7 @@
     "overwhelm": {
         "label": "Overwhelm",
         "image": "./resources/images/overwhelm.png",
-        "description": "Increases your critical damage and critical chance by 1%",
+        "description": "Increases critical chance and critical damage",
         "effects": [
             {
                 "type": "critical_chance",
@@ -233,7 +233,7 @@
     "life_force": {
         "label": "Life Force",
         "image": "./resources/images/overwhelm.png",
-        "description": "Increases health and energy regeneration by 1% [sic]",
+        "description": "Increases health and energy regeneration",
         "effects": [
             {
                 "type": "health_regeneration",
@@ -250,11 +250,274 @@
     "life_steal": {
         "label": "Life Steal",
         "image": "./resources/images/life_steal.png",
-        "description": "Increases your life steal by 2%",
+        "description": "Increases life steal",
         "effects": [
             {
                 "type": "life_steal",
                 "value": 2,
+                "unit": "%"
+            }
+        ]
+    },
+    "critical_damage": {
+        "label": "Critical Damage",
+        "image": "./resources/images/critical_damage.png",
+        "description": "Increases critical damage",
+        "effects": [
+            {
+                "type": "critical_damage",
+                "value": 1,
+                "unit": "%"
+            }
+        ]
+    },
+    "energy_regeneration": {
+        "label": "Energy Regeneration",
+        "image": "./resources/images/energy_regeneration.png",
+        "description": "Increases energy regeneration",
+        "effects": [
+            {
+                "type": "energy_regeneration",
+                "value": 2,
+                "unit": "%"
+            }
+        ]
+    },
+    "grand_vitality": {
+        "label": "Grand Vitality",
+        "image": "./resources/images/grand_vitality.png",
+        "description": "Increases maximum health",
+        "effects": [
+            {
+                "type": "max_health",
+                "value": 20,
+                "unit": "%"
+            }
+        ]
+    },
+    "invigorating_gust": {
+        "label": "Invigorating Gust",
+        "image": "./resources/images/invigorating_gust.png",
+        "description": "Chance to increase health regeneration by 5% for five seconds",
+        "triggerEffect": true
+    },
+    "phantom_strike": {
+        "label": "Phantom Strike",
+        "image": "./resources/images/phantom_strike.png",
+        "description": "Chance to increase critical chance by 5% for five seconds",
+        "triggerEffect": true
+    },
+    "tolerance": {
+        "label": "Tolerance",
+        "image": "./resources/images/tolerance.png",
+        "description": "Increases endurance",
+        "effects": [
+            {
+                "type": "endurance",
+                "value": 20,
+                "unit": "%"
+            }
+        ]
+    },
+    "slice_n_dice": {
+        "label": "Slice 'N Dice",
+        "image": "./resources/images/slice_n_dice.png",
+        "description": "Increases agility",
+        "effects": [
+            {
+                "type": "agility",
+                "value": 25,
+                "unit": "%"
+            }
+        ]
+    },
+    "soul_of_the_prophet": {
+        "label": "Sould Of The Prophet",
+        "image": "./resources/images/soul_of_the_prophet.png",
+        "description": "Increases experience gained",
+        "effects": [
+            {
+                "type": "experience_gain",
+                "value": 10,
+                "unit": "%"
+            }
+        ]
+    },
+    "lightning_keystone": {
+        "label": "Lightning",
+        "image": "./resources/images/lightning_keystone.png",
+        "description": "Increases damage with lightning abilities",
+        "effects": [
+            {
+                "type": "lightning_damage",
+                "value": 25,
+                "unit": "%"
+            }
+        ]
+    },
+    "arcane_keystone": {
+        "label": "Arcane",
+        "image": "./resources/images/arcane_keystone.png",
+        "description": "Increases damage with arcane abilities",
+        "effects": [
+            {
+                "type": "arcane_damage",
+                "value": 25,
+                "unit": "%"
+            }
+        ]
+    },
+    "fire_keystone": {
+        "label": "Fire",
+        "image": "./resources/images/fire_keystone.png",
+        "description": "Increases damage with fire abilities",
+        "effects": [
+            {
+                "type": "fire_damage",
+                "value": 25,
+                "unit": "%"
+            }
+        ]
+    },
+    "beast_mode": {
+        "label": "Beast Mode",
+        "image": "./resources/images/beast_mode.png",
+        "description": "Chance to increase critical damage and damage against bosses by 15% and attack speed by 5 for five seconds",
+        "triggerEffect": true
+    },
+    "trance_of_the_koprik": {
+        "label": "Trance Of The Koprik",
+        "image": "./resources/images/trance_of_the_koprik.png",
+        "description": "Increases maximum health, health regeneration and energy regeneration",
+        "effects": [
+            {
+                "type": "max_health",
+                "value": 10,
+                "unit": "%"
+            },
+            {
+                "type": "health_regeneration",
+                "value": 1,
+                "unit": "%"
+            },
+            {
+                "type": "energy_regeneration",
+                "value": 1,
+                "unit": ""
+            }
+        ]
+    },
+    "arcane_fury": {
+        "label": "Arcane Fury",
+        "image": "./resources/images/arcane_fury.png",
+        "description": "Chance to increase arcane and critical damage by 1%, can stack up to 150, lasts 20 seconds",
+        "triggerEffect": true
+    },
+    "fire_starter": {
+        "label": "Fire Starter",
+        "image": "./resources/images/fire_starter.png",
+        "description": "Chance to increase fire and base damage by 1%, can stack up to 150, lasts 20 seconds",
+        "triggerEffect": true
+    },
+    "taste_my_lightning": {
+        "label": "Taste My Lightning",
+        "image": "./resources/images/arcane_fury.png",
+        "description": "Chance to increase lightning damage and base armor by 1%, can stack up to 150, lasts 20 seconds",
+        "triggerEffect": true
+    },
+    "the_elementalist": {
+        "label": "The Elementalist",
+        "image": "./resources/images/the_elementalist.png",
+        "description": "Chance to increase fire, lightning and arcane damage by 50% for ten seconds",
+        "triggerEffect": true
+    },
+    "defiance": {
+        "label": "Defiance",
+        "image": "./resources/images/defiance.png",
+        "description": "Chance to increase armor by 50% and fire, lightning and arcane damage by 10% for a short duration",
+        "triggerEffect": true
+    },
+    "warstrike": {
+        "label": "Warstrike",
+        "image": "./resources/images/warstrike.png",
+        "description": "Chance to increase base damage by 30 for five seconds",
+        "triggerEffect": true
+    },
+    "infinite_wind": {
+        "label": "Infinite Wind",
+        "image": "./resources/images/infinite_wind.png",
+        "description": "Chance to increase energy regeneration by 15% for five seconds",
+        "triggerEffect": true
+    },
+    "heightened_senses": {
+        "label": "Heightened Senses",
+        "image": "./resources/images/heightened_senses.png",
+        "description": "Chance to increase critical damage by 25% for five seconds",
+        "triggerEffect": true
+    },
+    "colossal_force": {
+        "label": "Colossal Force",
+        "image": "./resources/images/colossal_force.png",
+        "description": "Chance to increase strength by 50 for five seconds",
+        "triggerEffect": true
+    },
+    "ancestral_barrier": {
+        "label": "Ancestral Barrier",
+        "image": "./resources/images/ancestral_barrier.png",
+        "description": "Chance to increase health and energy regeneration by 15% and armor by 50% for five seconds",
+        "triggerEffect": true
+    },
+    "monster_hunter": {
+        "label": "Monster Hunter",
+        "image": "./resources/images/monster_hunter.png",
+        "description": "Increases damage against bosses, armor and attack speed",
+        "effects": [
+            {
+                "type": "boss_damage",
+                "value": 20,
+                "unit": "%"
+            },
+            {
+                "type": "armor",
+                "value": 5,
+                "unit": "%"
+            },            {
+                "type": "attack_speed",
+                "value": 5,
+                "unit": ""
+            }
+        ]
+    },
+    "carrier_has_arrived": {
+        "label": "Carrier Has Arrived",
+        "image": "./resources/images/carrier_has_arrived.png",
+        "description": "Increases the number of inventory slots and attack speed",
+        "effects": [
+            {
+                "type": "inventory_slots",
+                "value": 20,
+                "unit": ""
+            },
+            {
+                "type": "attack_speed",
+                "value": 5,
+                "unit": ""
+            }
+        ]
+    },
+    "strength_and_honor": {
+        "label": "Strength And Honor",
+        "image": "./resources/images/strength_and_honor.png",
+        "description": "Increases strength and damage",
+        "effects": [
+            {
+                "type": "strength",
+                "value": 10,
+                "unit": "%"
+            },
+            {
+                "type": "damage",
+                "value": 10,
                 "unit": "%"
             }
         ]

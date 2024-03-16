@@ -16,7 +16,8 @@
  * @property {string} label
  * @property {string} image
  * @property {string} description
- * @property {NodeEffect[]} effects
+ * @property {NodeEffect[]?} effects
+ * @property {boolean?} triggerEffect
  */
 
 /**
@@ -178,7 +179,7 @@ function initResetButton() {
 function createNodeCircle(node) {
     const nodeType = nodeTypes.get(node.type);
     const circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
-    circle.setAttribute("r", "18.5px");
+    circle.setAttribute("r", "20px");
     circle.setAttribute("cx", node.x);
     circle.setAttribute("cy", node.y);
     circle.setAttribute("fill", "transparent");
@@ -198,8 +199,10 @@ function createNodeCircle(node) {
 function createNodeImage(node) {
     const nodeType = nodeTypes.get(node.type);
     const image = document.createElementNS("http://www.w3.org/2000/svg", 'image');
-    image.setAttribute("x", node.x - 18.5);
-    image.setAttribute("y", node.y - 18.5);
+    image.setAttribute("x", node.x - 20);
+    image.setAttribute("y", node.y - 20);
+    image.setAttribute("width", 40);
+    image.setAttribute("height", 40);
     image.setAttribute("href", nodeType.image);
     image.style.display = 'none';
     image.style.cursor = 'pointer';

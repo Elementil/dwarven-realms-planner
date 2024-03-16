@@ -53,7 +53,8 @@
         "id": 6,
         "type": "agility",
         "neighbours": [
-            4, 7
+            4,
+            7
         ],
         "x": 884,
         "y": 1251
@@ -62,7 +63,8 @@
         "id": 7,
         "type": "agility",
         "neighbours": [
-            6, 8
+            6,
+            8
         ],
         "x": 816,
         "y": 1266
@@ -71,7 +73,8 @@
         "id": 8,
         "type": "attack_damage",
         "neighbours": [
-            7, 9
+            7,
+            9
         ],
         "x": 750,
         "y": 1278
@@ -80,7 +83,8 @@
         "id": 9,
         "type": "attack_damage",
         "neighbours": [
-            8, 10
+            8,
+            10
         ],
         "x": 686,
         "y": 1292
@@ -93,5 +97,108 @@
         ],
         "x": 618,
         "y": 1304
+    },
+    {
+        "id": 11,
+        "type": "health_regeneration",
+        "neighbours": [
+            10,
+            12,
+            13
+        ],
+        "x": 540,
+        "y": 1318
+    },
+    {
+        "id": 12,
+        "type": "health_regeneration",
+        "neighbours": [
+            11,
+            14
+        ],
+        "x": 463,
+        "y": 1367
+    },
+    {
+        "id": 13,
+        "type": "health_regeneration",
+        "neighbours": [
+            11,
+            15
+        ],
+        "x": 554,
+        "y": 1256
+    },
+    {
+        "id": 14,
+        "type": "health_regeneration",
+        "neighbours": [
+            12,
+            16
+        ],
+        "x": 381,
+        "y": 1348
+    },
+    {
+        "id": 15,
+        "type": "health_regeneration",
+        "neighbours": [
+            13,
+            17,
+            19
+        ],
+        "x": 532,
+        "y": 1199
+    },
+    {
+        "id": 16,
+        "type": "health_regeneration",
+        "neighbours": [
+            14,
+            18
+        ],
+        "x": 340,
+        "y": 1283
+    },
+    {
+        "id": 17,
+        "type": "health_regeneration",
+        "neighbours": [
+            15,
+            18
+        ],
+        "x": 440,
+        "y": 1150
+    },
+    {
+        "id": 18,
+        "type": "health_regeneration",
+        "neighbours": [
+            16,
+            17,
+            20
+        ],
+        "x": 359,
+        "y": 1196
+    },
+    {
+        "id": 19,
+        "type": "attack_damage",
+        "neighbours": [
+            15,
+            21
+        ],
+        "x": 612,
+        "y": 1169
+    },
+    {
+        "id": 20,
+        "type": "attack_damage",
+        "neighbours": [
+            18,
+            22
+        ],
+        "x": 300,
+        "y": 1171
     }
 ]
