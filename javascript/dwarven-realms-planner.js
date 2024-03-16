@@ -12,13 +12,6 @@
  */
 
 /**
- * @typedef {object} NodeEffect
- * @property {string} type
- * @property {number} value
- * @property {string} unit
- */
-
-/**
  * @typedef {object} NodeType
  * @property {string} label
  * @property {string} image
@@ -26,6 +19,20 @@
  * @property {NodeEffect[]} effects
  */
 
+/**
+ * @typedef {object} NodeEffect
+ * @property {string} type
+ * @property {number} value
+ * @property {string} unit
+ */
+
+/**
+ * @typedef {object} EffectType
+ * @property {string} label
+ * @property {number} order
+ */
+
+import effectTypesImport from '../data/effect_types.json' assert { type: 'json' };
 import nodeTypesImport from '../data/node_types.json' assert { type: 'json' };
 import nodesImport from '../data/nodes.json' assert { type: 'json' };
 
@@ -41,17 +48,19 @@ function alert_coords(evt, svg) {
     console.log("(" + cursorpt.x + ", " + cursorpt.y + ")");
 }
 
+/** @type {Map<string, EffectType>} */
+const effectTypes = new Map(Object.entries(effectTypesImport));
 
-/** @type Map<string, NodeType> */
+/** @type {Map<string, NodeType>} */
 const nodeTypes = new Map(Object.entries(nodeTypesImport));
 
-/** @type Array<Node> */
+/** @type {Node[]} */
 const nodes = nodesImport;
 
-/** @type number */
+/** @type {number} */
 let playerLevel = 1;
 
-/** @type number */
+/** @type {number} */
 let availablePoints = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -98,7 +107,7 @@ function updateSummary() {
     const summaryWrapper = document.querySelector('#summary .summary-entries');
     summaryWrapper.replaceChildren();
     Array.from(getActiveEffects().entries())
-        .sort(([type1,], [type2,]) => type1.localeCompare(type2))
+        .sort(([type1,], [type2,]) => effectTypes.get(type1).order - effectTypes.get(type2).order)
         .forEach(([type, effects]) => {
             const effectsByUnit = new Map();
             effects.forEach(e => {
@@ -121,7 +130,7 @@ function createSummaryEntry(type, effectsByUnit) {
     const summaryEntry = document.createElement('div');
     summaryEntry.className = 'summary-entry';
     const entryLabel = document.createElement('div');
-    entryLabel.textContent = type;
+    entryLabel.textContent = effectTypes.get(type).label;
     summaryEntry.appendChild(entryLabel);
     Array.from(effectsByUnit.entries())
         .forEach(([unit, effects]) => {
@@ -212,7 +221,7 @@ function showTooltip(event, svgElement, nodeType) {
     const tooltip = document.getElementById('tooltip');
     tooltip.querySelector('.tooltip-title').textContent = nodeType.label;
     tooltip.querySelector('.tooltip-description').textContent = nodeType.description;
-    tooltip.querySelector('.tooltip-effect').textContent = `Level 1: ${nodeType.effects.map(e => `+${e.value}${e.unit} ${e.type}`).join(', ')}`;
+    tooltip.querySelector('.tooltip-effect').textContent = `Level 1: ${nodeType.effects.map(e => `+${e.value}${e.unit} ${effectTypes.get(e.type).label}`).join(', ')}`;
     tooltip.style.display = 'block';
 
     let left = (event.x + (svgElement.getBBox().width / 2));
@@ -249,9 +258,10 @@ function hideTooltip() {
  */
 function onNodeClicked(node) {
     if (isNodeStateChangable(node)) {
-        setNodeActive(node, !node.active);
-        updateAvailablePoints();
-        updateSummary();
+        if (setNodeActive(node, !node.active)) {
+            updateSummary();
+            updateAvailablePoints();
+        }
     }
 }
 
@@ -287,12 +297,12 @@ function getActiveEffects() {
  * 
  * @param {Node} node 
  * @param {boolean} active 
- * @returns {void}
+ * @returns {boolean}
  */
 function setNodeActive(node, active) {
     if (active) {
         if (availablePoints < 1) {
-            return;
+            return false;
         }
         node.image.style.display = 'block';
         node.circle.style.display = 'none';
@@ -301,6 +311,7 @@ function setNodeActive(node, active) {
         node.circle.style.display = 'block';
     }
     node.active = active;
+    return true;
 }
 
 /**
@@ -388,7 +399,7 @@ function hasConnectionToRootNode(node, rootNode, allNodes) {
 
     const toDoSet = [node];
 
-    /** @type number[] */
+    /** @type {number[]} */
     const doneSet = [];
 
     while (toDoSet.length > 0) {

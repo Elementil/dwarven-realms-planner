@@ -53,9 +53,45 @@
         "id": 6,
         "type": "agility",
         "neighbours": [
-            4
+            4, 7
         ],
         "x": 884,
         "y": 1251
+    },
+    {
+        "id": 7,
+        "type": "agility",
+        "neighbours": [
+            6, 8
+        ],
+        "x": 816,
+        "y": 1266
+    },
+    {
+        "id": 8,
+        "type": "attack_damage",
+        "neighbours": [
+            7, 9
+        ],
+        "x": 750,
+        "y": 1278
+    },
+    {
+        "id": 9,
+        "type": "attack_damage",
+        "neighbours": [
+            8, 10
+        ],
+        "x": 686,
+        "y": 1292
+    },
+    {
+        "id": 10,
+        "type": "attack_damage",
+        "neighbours": [
+            9
+        ],
+        "x": 618,
+        "y": 1304
     }
 ]

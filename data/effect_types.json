@@ -1,0 +1,78 @@
+{
+    "strength": {
+        "label": "Strength",
+        "order": 10
+    },
+    "agility": {
+        "label": "Agility",
+        "order": 20
+    },
+    "endurance": {
+        "label": "Endurance",
+        "order": 30
+    },
+    "damage": {
+        "label": "Damage",
+        "order": 40
+    },
+    "critical_chance": {
+        "label": "Critical Chance",
+        "order": 50
+    },
+    "critical_damage": {
+        "label": "Critical Damage",
+        "order": 60
+    },
+    "armor": {
+        "label": "Armor",
+        "order": 70
+    },
+    "attack_speed": {
+        "label": "Attack Speed",
+        "order": 80
+    },
+    "max_health": {
+        "label": "Max Health",
+        "order": 90
+    },
+    "health_regeneration": {
+        "label": "Health Regeneration",
+        "order": 100
+    },
+    "energy_regeneration": {
+        "label": "Energy Regeneration",
+        "order": 110
+    },
+    "life_steal": {
+        "label": "Life Steal",
+        "order": 120
+    },
+    "life_steal_chance": {
+        "label": "Life Steal Chance",
+        "order": 130
+    },
+    "experience_gain": {
+        "label": "Experience Bonus",
+        "order": 140
+    },
+    "fire_damage": {
+        "label": "Fire Damage",
+        "order": 150
+    },
+    "lightning_damage": {
+        "label": "Lightning Damage",
+        "order": 160
+    },
+    "arcane_damage": {
+        "label": "Arcane Damage",
+        "order": 170
+    },
+    "boss_damage": {
+        "label": "Boss Damage",
+        "order": 180
+    },
+    "inventory_slots": {
+        "label": "Inventory Slots",
+        "order": 190
+    }
+}
