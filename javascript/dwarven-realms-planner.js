@@ -95,7 +95,7 @@ function updateAvailablePoints() {
  * @returns {void}
  */
 function updateSummary() {
-    const summaryWrapper = document.querySelector('#summary .summary-wrapper');
+    const summaryWrapper = document.querySelector('#summary .summary-entries');
     summaryWrapper.replaceChildren();
     Array.from(getActiveEffects().entries())
         .sort(([type1,], [type2,]) => type1.localeCompare(type2))

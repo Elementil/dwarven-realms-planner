@@ -17,11 +17,32 @@
     }
 }
 
+:root {
+    --color: #eeeeee;
+    --highlight: #EB7800;
+    --background-color: rgba(0, 0, 0, 0.3);
+}
+
+.backdrop {
+    background: var(--background-color);
+    border: 1px solid var(--color);
+}
+
+.bright-orange {
+    color: var(--highlight);
+    filter: brightness(1.75);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
 body * {
     font-family: 'Trajan Pro Regular';
     font-weight: bold;
-    color: lightgray;
-    text-shadow: 1px 1px 1px black;
+    color: var(--color);
+    text-shadow: 1px 1px 0px black;
     user-select: none;
     box-sizing: border-box;
 }
@@ -35,8 +56,6 @@ input {
     padding: 1rem;
     font-size: 1.3rem;
     text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid lightgray;
 }
 
 button {
@@ -50,54 +69,98 @@ button {
 }
 
 button:hover {
-    color: #EB7800;
+    color: var(--highlight);
     filter: brightness(1.75);
 }
 
 button:active {
-    color: #EB7800;
     filter: invert(6%) sepia(93%) saturate(1512%) hue-rotate(360deg) brightness(80%) contrast(104%);
 }
 
 .tooltip {
     position: absolute;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(25, 25, 25, 0.8);
 }
 
 .tooltip .tooltip-title {
     font-size: 2rem;
-    color: #EB7800;
-    filter: brightness(1.75);
 }
 
 .tooltip .tooltip-description {
     font-size: 1.5rem;
-    color: lightgray;
+    color: var(--color);
 }
 
 .tooltip .tooltip-effect {
     margin-top: 0.5rem;
     font-size: 1.5rem;
-    color: #EB7800;
-    filter: brightness(1.75);
 }
 
-button.reset-all {
+.main {
+    display: flex;
+    background-color: #404443;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main .planner-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.main .planner-wrapper #planner {
+    height: 100%;
+}
+
+.main .side-panel {
+    display: flex;
+    flex-direction: column;
     flex: 1;
+    min-width: 14.5rem;
 }
 
-.summary {
+.main .side-panel .summary-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.main .side-panel .summary-wrapper .summary {
     display: flex;
     flex-direction: column;
     padding: 1rem;
     width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid lightgray;
 }
 
-.summary .summary-wrapper .summary-entry {
+.main .side-panel .summary-wrapper .summary .summary-label {
+    margin: auto;
+}
+
+.main .side-panel .summary-wrapper .summary .summary-entries {
+    display: flex;
+    flex-direction: column;
+}
+
+.main .side-panel .summary-wrapper .summary .summary-entries .summary-entry {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
+}
+
+.main .side-panel .actions-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: auto;
+    width: 100%;
+}
+
+.main .side-panel .actions-wrapper .player-level-wrapper {
+    margin-bottom: 1rem;
+}
+
+.main .side-panel .actions-wrapper button.reset-all {
+    flex: 1;
 }

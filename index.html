@@ -9,36 +9,37 @@
   <script type="module" src="./javascript/dwarven-realms-planner.js"></script>
 </head>
 
-<body style="margin: 0; height: 100vh;">
-  <div style="display: flex; background-color: #404443; height: 100%; width: 100%; overflow: hidden;">
-    <div style="overflow-x: auto; overflow-y: hidden;">
-      <svg id="planner" viewBox="0 0 2529 1427" preserveAspectRatio="xMidYMid slice" style="height: 100%;" xmlns="http://www.w3.org/2000/svg">
+<body>
+  <div class="main">
+    <div class="planner-wrapper">
+      <svg id="planner" viewBox="0 0 2529 1427" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <image x="0" y="0" href="./resources/images/tree_blank.png" />
-        <image x="870" y="1290" href="./resources//images/available_points.png" />
-        <text id="available-points" x="989" y="1370" fill="lightgray" font-size="1.4rem" dominant-baseline="middle" text-anchor="middle"></text>
+        <text x="979" y="1300" fill="#eeeeee" font-size="1.6rem" dominant-baseline="middle" text-anchor="middle">Available Points</text>
+        <image x="937" y="1318" href="./resources//images/available_points.png" />
+        <text id="available-points" x="979" y="1360" fill="#eeeeee" font-size="1.4rem" dominant-baseline="middle" text-anchor="middle"></text>
       </svg>
     </div>
-    <div style="display: flex; flex-direction: column; flex: 1; min-width: 14.5rem;">
-      <div style="display: flex; flex-direction: column; padding: 1rem;">
-        <div id="summary" class="summary">
-          <div style="margin: auto;">Summary</div>
-          <div class="summary-wrapper" style="display: flex; flex-direction: column;">
+    <div class="side-panel">
+      <div class="summary-wrapper">
+        <div id="summary" class="summary backdrop">
+          <div class="summary-label">Summary</div>
+          <div class="summary-entries">
           </div>
         </div>
       </div>
-      <div style="display: flex; flex-direction: column; padding: 1rem; margin-top: auto; width: 100%;">
-        <div style="margin-bottom: 1rem;">
+      <div class="actions-wrapper">
+        <div class="player-level-wrapper">
           <label for="player-level">Player level</label>
-          <input id="player-level" type="number" min="1" class="input" oninput="validity.valid||(value='');" />
+          <input id="player-level" class="backdrop" type="number" min="1" class="input" oninput="validity.valid||(value='');" />
         </div>
         <button class="button reset-all">Reset</button>
       </div>
     </div>
   </div>
   <div id="tooltip" class="tooltip" style="display: none;">
-    <div class="tooltip-title"></div>
+    <div class="tooltip-title bright-orange"></div>
     <div class="tooltip-description"></div>
-    <div class="tooltip-effect"></div>
+    <div class="tooltip-effect bright-orange"></div>
   </div>
 </body>
 
