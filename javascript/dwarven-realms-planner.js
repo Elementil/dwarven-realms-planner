@@ -18,6 +18,7 @@
  * @property {string} description
  * @property {NodeEffect[]?} effects
  * @property {boolean?} triggerEffect
+ * @property {boolean?} keystone
  */
 
 /**
@@ -37,7 +38,6 @@ import effectTypesImport from '../data/effect_types.json' assert { type: 'json' 
 import nodeTypesImport from '../data/node_types.json' assert { type: 'json' };
 import nodesImport from '../data/nodes.json' assert { type: 'json' };
 
-
 var pt;
 
 function alert_coords(evt, svg) {
@@ -46,7 +46,10 @@ function alert_coords(evt, svg) {
 
     // The cursor point, translated into svg coordinates
     var cursorpt = pt.matrixTransform(svg.getScreenCTM().inverse());
-    console.log("(" + cursorpt.x + ", " + cursorpt.y + ")");
+
+    const newNode = `{"x": ${Math.round(cursorpt.x)}, "y": ${Math.round(cursorpt.y)}},`;
+    navigator.clipboard.writeText(newNode);
+    console.log(newNode);
 }
 
 /** @type {Map<string, EffectType>} */
@@ -104,48 +107,6 @@ function updateAvailablePoints() {
  * 
  * @returns {void}
  */
-function updateSummary() {
-    const summaryWrapper = document.querySelector('#summary .summary-entries');
-    summaryWrapper.replaceChildren();
-    Array.from(getActiveEffects().entries())
-        .sort(([type1,], [type2,]) => effectTypes.get(type1).order - effectTypes.get(type2).order)
-        .forEach(([type, effects]) => {
-            const effectsByUnit = new Map();
-            effects.forEach(e => {
-                if (!effectsByUnit.has(e.unit)) {
-                    effectsByUnit.set(e.unit, []);
-                }
-                effectsByUnit.get(e.unit).push(e);
-            });
-            summaryWrapper.appendChild(createSummaryEntry(type, effectsByUnit));
-        });
-}
-
-/**
- * 
- * @param {string} type 
- * @param {Map<string, NodeEffect[]>} effectsByUnit 
- * @returns {HTMLDivElement}
- */
-function createSummaryEntry(type, effectsByUnit) {
-    const summaryEntry = document.createElement('div');
-    summaryEntry.className = 'summary-entry';
-    const entryLabel = document.createElement('div');
-    entryLabel.textContent = effectTypes.get(type).label;
-    summaryEntry.appendChild(entryLabel);
-    Array.from(effectsByUnit.entries())
-        .forEach(([unit, effects]) => {
-            const unitEntry = document.createElement('div');
-            unitEntry.textContent = `+${effects.reduce((sum, e) => sum + e.value, 0)}${unit}`;
-            summaryEntry.appendChild(unitEntry);
-        });
-    return summaryEntry;
-}
-
-/**
- * 
- * @returns {void}
- */
 function initPlayerLevelInput() {
     const playerLevelInput = document.getElementById('player-level');
     playerLevelInput.addEventListener('keyup', event => {
@@ -177,15 +138,14 @@ function initResetButton() {
  * @returns {SVGCircleElement}
  */
 function createNodeCircle(node) {
-    const nodeType = nodeTypes.get(node.type);
     const circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
-    circle.setAttribute("r", "20px");
+    circle.setAttribute("r", nodeTypes.get(node.type).keystone ? "40px" : "20px");
     circle.setAttribute("cx", node.x);
     circle.setAttribute("cy", node.y);
     circle.setAttribute("fill", "transparent");
     circle.style.cursor = 'pointer';
     circle.addEventListener('click', () => onNodeClicked(node));
-    circle.addEventListener('mouseover', event => showTooltip(event, circle, nodeType));
+    circle.addEventListener('mouseover', event => showTooltip(event, circle, node));
     circle.addEventListener('mouseout', hideTooltip);
     node.circle = circle;
     return circle;
@@ -198,16 +158,17 @@ function createNodeCircle(node) {
  */
 function createNodeImage(node) {
     const nodeType = nodeTypes.get(node.type);
+    const scaleFactor = nodeType.keystone ? 2 : 1;
     const image = document.createElementNS("http://www.w3.org/2000/svg", 'image');
-    image.setAttribute("x", node.x - 20);
-    image.setAttribute("y", node.y - 20);
-    image.setAttribute("width", 40);
-    image.setAttribute("height", 40);
+    image.setAttribute("x", node.x - scaleFactor * 20);
+    image.setAttribute("y", node.y - scaleFactor * 20);
+    image.setAttribute("width", scaleFactor * 40);
+    image.setAttribute("height", scaleFactor * 40);
     image.setAttribute("href", nodeType.image);
     image.style.display = 'none';
     image.style.cursor = 'pointer';
     image.addEventListener('click', () => onNodeClicked(node));
-    image.addEventListener('mouseover', event => showTooltip(event, image, nodeType));
+    image.addEventListener('mouseover', event => showTooltip(event, image, node));
     image.addEventListener('mouseout', hideTooltip);
     node.image = image;
     return image;
@@ -217,14 +178,16 @@ function createNodeImage(node) {
  * 
  * @param {MouseEvent} event 
  * @param {SVGGraphicsElement} svgElement 
- * @param {NodeType} nodeType
+ * @param {Node} node
  * @returns {void} 
  */
-function showTooltip(event, svgElement, nodeType) {
+function showTooltip(event, svgElement, node) {
+    const nodeType = nodeTypes.get(node.type);
     const tooltip = document.getElementById('tooltip');
+    tooltip.querySelector('.node-id').textContent = node.id;
     tooltip.querySelector('.tooltip-title').textContent = nodeType.label;
     tooltip.querySelector('.tooltip-description').textContent = nodeType.description;
-    tooltip.querySelector('.tooltip-effect').textContent = `Level 1: ${nodeType.effects.map(e => `+${e.value}${e.unit} ${effectTypes.get(e.type).label}`).join(', ')}`;
+    tooltip.querySelector('.tooltip-effect').textContent = nodeType.triggerEffect ? '' : `Level 1: ${nodeType.effects.map(e => `+${e.value}${e.unit} ${effectTypes.get(e.type).label}`).join(', ')}`;
     tooltip.style.display = 'block';
 
     let left = (event.x + (svgElement.getBBox().width / 2));
@@ -260,12 +223,15 @@ function hideTooltip() {
  * @param {Node} node 
  */
 function onNodeClicked(node) {
-    if (isNodeStateChangable(node)) {
+    setNodeActive(node, !node.active);
+    updateSummary();
+
+    /* if (isNodeStateChangable(node)) {
         if (setNodeActive(node, !node.active)) {
             updateSummary();
             updateAvailablePoints();
         }
-    }
+    } */
 }
 
 /**
@@ -280,13 +246,65 @@ function resetAll() {
 
 /**
  * 
+ * @returns {void}
+ */
+function updateSummary() {
+    const summaryWrapper = document.querySelector('#summary .summary-entries');
+    summaryWrapper.replaceChildren();
+    Array.from(getActiveEffects().entries())
+        .sort(([type1,], [type2,]) => effectTypes.get(type1).order - effectTypes.get(type2).order)
+        .forEach(([type, effects]) => {
+            const effectsByUnit = new Map();
+            effects.forEach(e => {
+                if (!effectsByUnit.has(e.unit)) {
+                    effectsByUnit.set(e.unit, []);
+                }
+                effectsByUnit.get(e.unit).push(e);
+            });
+            summaryWrapper.appendChild(createSummaryEntry(type, effectsByUnit));
+        });
+}
+
+/**
+ * 
+ * @param {string} type 
+ * @param {Map<string, NodeEffect[]>} effectsByUnit 
+ * @returns {HTMLDivElement}
+ */
+function createSummaryEntry(type, effectsByUnit) {
+    const triggerEffect = type === 'trigger_effect';
+    const summaryEntry = document.createElement('div');
+    summaryEntry.className = 'summary-entry';
+    const entryLabel = document.createElement('div');
+    entryLabel.style.fontSize = '0.8rem';
+    entryLabel.textContent = effectTypes.get(type).label;
+    summaryEntry.appendChild(entryLabel);
+    Array.from(effectsByUnit.entries())
+        .forEach(([unit, effects]) => {
+            const unitEntry = document.createElement('div');
+            unitEntry.style.marginTop = '0.5rem';
+            if (triggerEffect) {
+                unitEntry.className = 'bright-orange';
+            }
+            const value = effects.reduce((sum, e) => sum + e.value, 0);
+            unitEntry.textContent = `${triggerEffect ? '' : '+' + value.toFixed(2)}${unit}`;
+            summaryEntry.appendChild(unitEntry);
+        });
+    return summaryEntry;
+}
+
+/**
+ * 
  * @returns {Map<string, NodeEffect[]>}
  */
 function getActiveEffects() {
     /** @type {Map<string, NodeEffect[]>} */
     const effects = new Map();
     nodes.filter(n => n.active)
-        .flatMap(n => nodeTypes.get(n.type).effects)
+        .flatMap(n => {
+            const nodeType = nodeTypes.get(n.type);
+            return nodeType.triggerEffect ? [{ type: 'trigger_effect', value: 0, unit: nodeType.description }] : nodeType.effects;
+        })
         .forEach(e => {
             if (!effects.has(e.type)) {
                 effects.set(e.type, []);

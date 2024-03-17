@@ -293,19 +293,22 @@
                 "value": 20,
                 "unit": "%"
             }
-        ]
+        ],
+        "keystone": true
     },
     "invigorating_gust": {
         "label": "Invigorating Gust",
         "image": "./resources/images/invigorating_gust.png",
         "description": "Chance to increase health regeneration by 5% for five seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "phantom_strike": {
         "label": "Phantom Strike",
         "image": "./resources/images/phantom_strike.png",
         "description": "Chance to increase critical chance by 5% for five seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "tolerance": {
         "label": "Tolerance",
@@ -317,7 +320,8 @@
                 "value": 20,
                 "unit": "%"
             }
-        ]
+        ],
+        "keystone": true
     },
     "slice_n_dice": {
         "label": "Slice 'N Dice",
@@ -329,7 +333,8 @@
                 "value": 25,
                 "unit": "%"
             }
-        ]
+        ],
+        "keystone": true
     },
     "soul_of_the_prophet": {
         "label": "Sould Of The Prophet",
@@ -341,7 +346,8 @@
                 "value": 10,
                 "unit": "%"
             }
-        ]
+        ],
+        "keystone": true
     },
     "lightning_keystone": {
         "label": "Lightning",
@@ -353,7 +359,8 @@
                 "value": 25,
                 "unit": "%"
             }
-        ]
+        ],
+        "keystone": true
     },
     "arcane_keystone": {
         "label": "Arcane",
@@ -365,7 +372,8 @@
                 "value": 25,
                 "unit": "%"
             }
-        ]
+        ],
+        "keystone": true
     },
     "fire_keystone": {
         "label": "Fire",
@@ -377,13 +385,15 @@
                 "value": 25,
                 "unit": "%"
             }
-        ]
+        ],
+        "keystone": true
     },
     "beast_mode": {
         "label": "Beast Mode",
         "image": "./resources/images/beast_mode.png",
         "description": "Chance to increase critical damage and damage against bosses by 15% and attack speed by 5 for five seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "trance_of_the_koprik": {
         "label": "Trance Of The Koprik",
@@ -405,67 +415,78 @@
                 "value": 1,
                 "unit": ""
             }
-        ]
+        ],
+        "keystone": true
     },
     "arcane_fury": {
         "label": "Arcane Fury",
         "image": "./resources/images/arcane_fury.png",
         "description": "Chance to increase arcane and critical damage by 1%, can stack up to 150, lasts 20 seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "fire_starter": {
         "label": "Fire Starter",
         "image": "./resources/images/fire_starter.png",
         "description": "Chance to increase fire and base damage by 1%, can stack up to 150, lasts 20 seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "taste_my_lightning": {
         "label": "Taste My Lightning",
         "image": "./resources/images/arcane_fury.png",
         "description": "Chance to increase lightning damage and base armor by 1%, can stack up to 150, lasts 20 seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "the_elementalist": {
         "label": "The Elementalist",
         "image": "./resources/images/the_elementalist.png",
         "description": "Chance to increase fire, lightning and arcane damage by 50% for ten seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "defiance": {
         "label": "Defiance",
         "image": "./resources/images/defiance.png",
         "description": "Chance to increase armor by 50% and fire, lightning and arcane damage by 10% for a short duration",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "warstrike": {
         "label": "Warstrike",
         "image": "./resources/images/warstrike.png",
         "description": "Chance to increase base damage by 30 for five seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "infinite_wind": {
         "label": "Infinite Wind",
         "image": "./resources/images/infinite_wind.png",
         "description": "Chance to increase energy regeneration by 15% for five seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "heightened_senses": {
         "label": "Heightened Senses",
         "image": "./resources/images/heightened_senses.png",
         "description": "Chance to increase critical damage by 25% for five seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "colossal_force": {
         "label": "Colossal Force",
         "image": "./resources/images/colossal_force.png",
         "description": "Chance to increase strength by 50 for five seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "ancestral_barrier": {
         "label": "Ancestral Barrier",
         "image": "./resources/images/ancestral_barrier.png",
         "description": "Chance to increase health and energy regeneration by 15% and armor by 50% for five seconds",
-        "triggerEffect": true
+        "triggerEffect": true,
+        "keystone": true
     },
     "monster_hunter": {
         "label": "Monster Hunter",
@@ -481,12 +502,14 @@
                 "type": "armor",
                 "value": 5,
                 "unit": "%"
-            },            {
+            },
+            {
                 "type": "attack_speed",
                 "value": 5,
                 "unit": ""
             }
-        ]
+        ],
+        "keystone": true
     },
     "carrier_has_arrived": {
         "label": "Carrier Has Arrived",
@@ -503,7 +526,8 @@
                 "value": 5,
                 "unit": ""
             }
-        ]
+        ],
+        "keystone": true
     },
     "strength_and_honor": {
         "label": "Strength And Honor",
@@ -520,6 +544,7 @@
                 "value": 10,
                 "unit": "%"
             }
-        ]
+        ],
+        "keystone": true
     }
 }

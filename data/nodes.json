@@ -185,8 +185,7 @@
         "id": 19,
         "type": "attack_damage",
         "neighbours": [
-            15,
-            21
+            15
         ],
         "x": 612,
         "y": 1169
@@ -195,10 +194,51 @@
         "id": 20,
         "type": "attack_damage",
         "neighbours": [
-            18,
-            22
+            18
         ],
         "x": 300,
         "y": 1171
+    },
+    {
+        "id": 1000,
+        "type": "grand_vitality",
+        "neighbours": [],
+        "x": 784,
+        "y": 1071
+    },
+    {
+        "id": 1001,
+        "type": "invigorating_gust",
+        "neighbours": [],
+        "x": 444,
+        "y": 1263
+    },
+    {
+        "id": 1002,
+        "type": "phantom_strike",
+        "neighbours": [],
+        "x": 160,
+        "y": 1071
+    },
+    {
+        "id": 1003,
+        "type": "tolerance",
+        "neighbours": [],
+        "x": 444,
+        "y": 858
+    },
+    {
+        "id": 1004,
+        "type": "slice_n_dice",
+        "neighbours": [],
+        "x": 1051,
+        "y": 863
+    },
+    {
+        "id": 1005,
+        "type": "soul_of_the_prophet",
+        "neighbours": [],
+        "x": 448,
+        "y": 495
     }
 ]

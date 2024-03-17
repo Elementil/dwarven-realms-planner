@@ -74,5 +74,9 @@
     "inventory_slots": {
         "label": "Inventory Slots",
         "order": 190
-    }
+    },
+    "trigger_effect": {
+        "label": "Trigger Effects",
+        "order": 200
+    } 
 }

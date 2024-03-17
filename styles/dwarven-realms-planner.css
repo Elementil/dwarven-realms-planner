@@ -79,6 +79,7 @@ button:active {
 
 .tooltip {
     position: absolute;
+    max-width: min(600px, 50vw);
     padding: 1rem;
     background: rgba(25, 25, 25, 0.8);
 }
