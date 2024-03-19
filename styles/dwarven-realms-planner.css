@@ -16,6 +16,13 @@
         font-size: 12px;
     }
 
+    :root * {
+        cursor: default;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+    }
+
     .main .planner-wrapper #planner {
         height: 200% !important;
     }
