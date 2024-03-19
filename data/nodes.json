@@ -44,7 +44,8 @@
         "id": 5,
         "type": "vitality",
         "neighbours": [
-            3
+            3,
+            21
         ],
         "x": 942,
         "y": 1178
@@ -93,7 +94,8 @@
         "id": 10,
         "type": "attack_damage",
         "neighbours": [
-            9
+            9,
+            11
         ],
         "x": 618,
         "y": 1304
@@ -134,7 +136,8 @@
         "type": "health_regeneration",
         "neighbours": [
             12,
-            16
+            16,
+            1001
         ],
         "x": 381,
         "y": 1348
@@ -200,16 +203,103 @@
         "y": 1171
     },
     {
+        "id": 21,
+        "type": "vitality",
+        "neighbours": [
+            5,
+            22,
+            28
+        ],
+        "x": 871,
+        "y": 1136
+    },
+    {
+        "id": 22,
+        "type": "vitality",
+        "neighbours": [
+            21,
+            23,
+            1000
+        ],
+        "x": 778,
+        "y": 1179
+    },
+    {
+        "id": 23,
+        "type": "vitality",
+        "neighbours": [
+            19,
+            22,
+            24
+        ],
+        "x": 690,
+        "y": 1136
+    },
+    {
+        "id": 24,
+        "type": "vitality",
+        "neighbours": [
+            23,
+            25
+        ],
+        "x": 668,
+        "y": 1067
+    },
+    {
+        "id": 25,
+        "type": "vitality",
+        "neighbours": [
+            24,
+            26
+        ],
+        "x": 695,
+        "y": 1003
+    },
+    {
+        "id": 26,
+        "type": "vitality",
+        "neighbours": [
+            25,
+            27
+        ],
+        "x": 778,
+        "y": 960
+    },
+    {
+        "id": 27,
+        "type": "vitality",
+        "neighbours": [
+            26,
+            28
+        ],
+        "x": 871,
+        "y": 1003
+    },
+    {
+        "id": 28,
+        "type": "vitality",
+        "neighbours": [
+            21,
+            27
+        ],
+        "x": 887,
+        "y": 1068
+    },
+    {
         "id": 1000,
         "type": "grand_vitality",
-        "neighbours": [],
+        "neighbours": [
+            22
+        ],
         "x": 784,
         "y": 1071
     },
     {
         "id": 1001,
         "type": "invigorating_gust",
-        "neighbours": [],
+        "neighbours": [
+            14
+        ],
         "x": 444,
         "y": 1263
     },
