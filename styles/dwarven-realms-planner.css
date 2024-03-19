@@ -5,15 +5,29 @@
     src: local('Trajan Pro Regular'), url('../resources/fonts/TrajanPro-Regular.woff') format('woff');
 }
 
-@media screen and (max-height:720px) {
-    :root {
-        font-size: 12px;
+@media screen and (max-height: 1200px) {
+    .main .planner-wrapper #planner {
+        height: 150% !important;
     }
 }
 
-@media screen and (max-height:450px) {
+@media screen and (max-height: 900px) {
+    :root {
+        font-size: 12px;
+    }
+
+    .main .planner-wrapper #planner {
+        height: 200% !important;
+    }
+}
+
+@media screen and (max-height: 600px) {
     :root {
         font-size: 10px;
+    }
+
+    .main .planner-wrapper #planner {
+        height: 250% !important;
     }
 }
 
@@ -21,6 +35,11 @@
     --color: #eeeeee;
     --highlight: #EB7800;
     --background-color: rgba(0, 0, 0, 0.3);
+}
+
+:root * {
+    scrollbar-width: thin;
+    scrollbar-color: #2b302f #121414;
 }
 
 .backdrop {
@@ -60,7 +79,7 @@ input {
 
 button {
     font-size: 1.5rem;
-    background: url('../resources//images/button.png');
+    background: url('../resources/images/button.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border: none;
@@ -106,11 +125,13 @@ button:active {
 }
 
 .main .planner-wrapper {
-    overflow-x: auto;
-    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }
 
 .main .planner-wrapper #planner {
+    display: flex;
     height: 100%;
 }
 
@@ -124,7 +145,8 @@ button:active {
 .main .side-panel .summary-wrapper {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
+    overflow: hidden;
 }
 
 .main .side-panel .summary-wrapper .summary {
@@ -132,6 +154,7 @@ button:active {
     flex-direction: column;
     padding: 1rem;
     width: 100%;
+    overflow: hidden;
 }
 
 .main .side-panel .summary-wrapper .summary .summary-label {
@@ -141,6 +164,7 @@ button:active {
 .main .side-panel .summary-wrapper .summary .summary-entries {
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 .main .side-panel .summary-wrapper .summary .summary-entries .summary-entry {
