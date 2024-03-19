@@ -331,5 +331,131 @@
         "neighbours": [],
         "x": 448,
         "y": 495
+    },
+    {
+        "id": 1006,
+        "type": "beast_mode",
+        "neighbours": [],
+        "x": 187,
+        "y": 191
+    },
+    {
+        "id": 1007,
+        "type": "trance_of_the_koprik",
+        "neighbours": [],
+        "x": 576,
+        "y": 196
+    },
+    {
+        "id": 1008,
+        "type": "arcane_fury",
+        "neighbours": [],
+        "x": 928,
+        "y": 324
+    },
+    {
+        "id": 1009,
+        "type": "the_elementalist",
+        "neighbours": [],
+        "x": 1259,
+        "y": 527
+    },
+    {
+        "id": 1010,
+        "type": "fire_starter",
+        "neighbours": [],
+        "x": 1254,
+        "y": 144
+    },
+    {
+        "id": 1011,
+        "type": "defiance",
+        "neighbours": [],
+        "x": 1472,
+        "y": 858
+    },
+    {
+        "id": 1012,
+        "type": "taste_my_lightning",
+        "neighbours": [],
+        "x": 1606,
+        "y": 319
+    },
+    {
+        "id": 1013,
+        "type": "lightning_keystone",
+        "neighbours": [],
+        "x": 53,
+        "y": 751
+    },
+    {
+        "id": 1014,
+        "type": "arcane_keystone",
+        "neighbours": [],
+        "x": 53,
+        "y": 676
+    },
+    {
+        "id": 1015,
+        "type": "fire_keystone",
+        "neighbours": [],
+        "x": 53,
+        "y": 601
+    },
+    {
+        "id": 1016,
+        "type": "warstrike",
+        "neighbours": [],
+        "x": 1750,
+        "y": 1071
+    },
+    {
+        "id": 1017,
+        "type": "strength_and_honor",
+        "neighbours": [],
+        "x": 1947,
+        "y": 192
+    },
+    {
+        "id": 1018,
+        "type": "carrier_has_arrived",
+        "neighbours": [],
+        "x": 2075,
+        "y": 495
+    },
+    {
+        "id": 1019,
+        "type": "colossal_force",
+        "neighbours": [],
+        "x": 2080,
+        "y": 858
+    },
+    {
+        "id": 1020,
+        "type": "infinite_wind",
+        "neighbours": [],
+        "x": 2080,
+        "y": 1263
+    },
+    {
+        "id": 1021,
+        "type": "heightened_senses",
+        "neighbours": [],
+        "x": 2368,
+        "y": 1072
+    },
+    {
+        "id": 1022,
+        "type": "monster_hunter",
+        "neighbours": [],
+        "x": 2384,
+        "y": 618
+    },
+    {
+        "id": 1023,
+        "type": "ancestral_barrier",
+        "neighbours": [],
+        "x": 2342,
+        "y": 191
     }
 ]

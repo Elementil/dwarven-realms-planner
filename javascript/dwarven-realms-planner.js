@@ -18,7 +18,7 @@
  * @property {string} description
  * @property {NodeEffect[]?} effects
  * @property {boolean?} triggerEffect
- * @property {boolean?} keystone
+ * @property {string?} size
  */
 
 /**
@@ -138,8 +138,15 @@ function initResetButton() {
  * @returns {SVGCircleElement}
  */
 function createNodeCircle(node) {
+    const size = nodeTypes.get(node.type).size;
+    let radius = '20px';
+    if (size === 'large') {
+        radius = '40px';
+    } else if (size === 'medium') {
+        radius = '33px';
+    }
     const circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
-    circle.setAttribute("r", nodeTypes.get(node.type).keystone ? "40px" : "20px");
+    circle.setAttribute("r", radius);
     circle.setAttribute("cx", node.x);
     circle.setAttribute("cy", node.y);
     circle.setAttribute("fill", "transparent");
@@ -158,7 +165,12 @@ function createNodeCircle(node) {
  */
 function createNodeImage(node) {
     const nodeType = nodeTypes.get(node.type);
-    const scaleFactor = nodeType.keystone ? 2 : 1;
+    let scaleFactor = 1;
+    if(nodeType.size === 'large') {
+        scaleFactor = 2;
+    } else if(nodeType.size === 'medium') {
+        scaleFactor = 1.65;
+    }
     const image = document.createElementNS("http://www.w3.org/2000/svg", 'image');
     image.setAttribute("x", node.x - scaleFactor * 20);
     image.setAttribute("y", node.y - scaleFactor * 20);
