@@ -188,7 +188,8 @@
         "id": 19,
         "type": "attack_damage",
         "neighbours": [
-            15
+            15,
+            23
         ],
         "x": 612,
         "y": 1169

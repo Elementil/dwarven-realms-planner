@@ -223,15 +223,12 @@ function hideTooltip() {
  * @param {Node} node 
  */
 function onNodeClicked(node) {
-    setNodeActive(node, !node.active);
-    updateSummary();
-
-    /* if (isNodeStateChangable(node)) {
+    if (isNodeStateChangable(node)) {
         if (setNodeActive(node, !node.active)) {
             updateSummary();
             updateAvailablePoints();
         }
-    } */
+    }
 }
 
 /**
